@@ -10,6 +10,7 @@ package org.example;
 //        6. Use the Collections.sort method to sort the list by GPA (highest to lowest).
 //        7. Iterate over the sorted list and print out the name and GPA of each student."
 import java.util.*;
+import java.util.logging.*;
 public class SchoolGpaTest {
         private String name;
         private int age;
@@ -40,6 +41,7 @@ class StudentTest{
         SchoolGpaTest s=new SchoolGpaTest();
         SchoolGpaTest s1=new SchoolGpaTest();
         SchoolGpaTest s2=new SchoolGpaTest();
+        Logger log=Logger.getLogger("StudentTest");
 
 
         s.setDetails("vino",19,9.5);
@@ -49,7 +51,7 @@ class StudentTest{
         s2.setDetails("arun",21,8.5);
         l.add(s2);
         for (SchoolGpaTest li:l){
-            System.out.println(li.getName()+"\t"+li.getAge()+"\t"+li.getGpa());
+            log.log(Level.INFO,()->li.getName()+"\t"+li.getAge()+"\t"+li.getGpa());
         }
         Comparator<SchoolGpaTest> cam=new Comparator<>() {
             public int compare(SchoolGpaTest s,SchoolGpaTest s1){
@@ -62,9 +64,9 @@ class StudentTest{
             }
         };
         Collections.sort(l,cam);
-        System.out.println("After Soring the GPA score Highest to Lowest ");
+        log.info("After Soring the GPA score Highest to Lowest ");
         for (SchoolGpaTest li:l){
-            System.out.println("Name :"+li.getName()+"\tGpa :"+li.getGpa());
+            log.log(Level.INFO,()->"Name :"+li.getName()+"\tGpa :"+li.getGpa());
         }
     }
 }
